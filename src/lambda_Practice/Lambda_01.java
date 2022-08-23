@@ -146,6 +146,7 @@ Sorunun farkli cozumleri.
         // şekilde kesilmiş bir akış return eder. Stream return eder.
 
         yemek.stream().sorted(Comparator.comparing(t->t.toString().length()).reversed());
+        //
 
 
     }
