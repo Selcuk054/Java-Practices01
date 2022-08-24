@@ -12,9 +12,10 @@ public class Runner_01 extends Lambda_01 { //inherite birazdan
         elemanlariCarp(numbers);
         System.out.println("**************");
         teklerinKareBuyuktenKucuge(numbers);
+        System.out.println();
         sonHarfeGoreTersSira(menu);
         System.out.println("**************");
-
+        karkterEnFazla(menu);
         System.out.println("**************");
 
         System.out.println("**************");

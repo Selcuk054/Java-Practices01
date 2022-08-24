@@ -11,14 +11,10 @@ public class Lambda_01 {//okul projesinde listele vb lamda expression ile yapini
 
     static List<String> menu = new ArrayList<>(Arrays.asList("kusleme", "adana", "trilice", "havucdilim", "buryan",
             "kokorec", "kuzutandir", "guvec"));
-    /* TASK :
-     * Input olarak verilen listteki isimlerden
-     * icinde ‘a’ harfi bulunanlari silen bir code create ediniz.
-     *
-     * INPUT : list1={"Ali","Veli","Ayse","Fatma","Omer"}
-     * OUTPUT : [Veli,Omer]
+    /* SORU 1-) :Input olarak verilen listteki isimlerden icinde ‘a’ harfi bulunanlari silen bir code create ediniz.
      */
     public static void aHarfleriSilenGerisiniYazdiran(ArrayList<String> isimler){
+//       1.yol
 //        System.out.println(isimler.stream()//akiisa alindi
 //                .map(m -> m.toLowerCase())//hepsi kucuk harffe cevrilfi
 //                .filter(m -> !m.contains("a"))//a harfi olmayanlar filtrelendi
@@ -27,11 +23,12 @@ public class Lambda_01 {//okul projesinde listele vb lamda expression ile yapini
 //        System.out.println(isimler.stream()//akiisa alindi
 //                .filter(m -> !m.contains("a") && !m.contains("A"))//a harfi olmayanlar filtrelendi
 //                .collect(Collectors.toList()));//lisste atildi
-//3.yol
+//      3.yol
         isimler.removeIf(t->t.contains("a") || t.contains("A"));
         System.out.println(names);
     }
-    //en buyyk elemani bulun
+
+    // SORU 2-) en buyyk elemani bulun
     public static void maxElemanBul(List<Integer> sayi){
         Optional<Integer> maxSayi=
                 sayi.stream().
@@ -40,7 +37,7 @@ public class Lambda_01 {//okul projesinde listele vb lamda expression ile yapini
         //2.yol
         System.out.println("sayi.stream().reduce(Integer::max) = " + sayi.
                 stream().
-                reduce(Integer::max));//spesifik bir method cagirirsani daha hizli yani alirsinz
+                reduce(Integer::max));//spesifik bir method cagirirsaniz daha hizli yanit alirsiniz
 //        reduce()-->azaltmak ... bir cok datayi tek bir dataya(max min carp top vs islemlerde) cevirmek icin kullanilir.
 //                kullanımı yaygındır pratiktir.
 //        Bir Stream içerisindeki verilerin teker teker işlenmesidir. Teker teker işleme sürecinde, bir önceki adımda elde edilen sonuç
@@ -49,28 +46,33 @@ public class Lambda_01 {//okul projesinde listele vb lamda expression ile yapini
 //                reduce işleminde bir önceki hesaplanmış değer ile sıradaki değer bir işleme tabi tutulmaktadır.
 //        İşleme başlarken bir önceki değer olmadığı için bu değer identity parametresinde tanımlanmaktadır.
     }
-    // Task : List'teki tum elemanlarin toplamini yazdiriniz.
-    //Lambda Expression...
+
+    // SORU 3-) : List'teki tum elemanlarin toplamini yazdiriniz. Lambda Expression..
+
     public static void elemanlariTopla(List<Integer> sayilar){
+        //1. yol
         System.out.println("sayilar.stream().reduce(0,(a,b)-> a+b) = " +
                 sayilar.stream()
                         .reduce(0, (a, b) -> a + b));
+        //2. yol
         System.out.println("sayilar.stream().reduce(Integer::sum) = " + sayilar.stream().
-                reduce(Integer::sum).get());//spesifik methoda daha hizlidir
+                reduce(Integer::sum).get());//spesifik methoda gore daha hizlidir
     }
-    // Task : List'teki cift elemanlarin carpimini  yazdiriniz.
+
+    // SORU 4-) : List'teki cift elemanlarin carpimini  yazdiriniz.
     public static void elemanlariCarp(List<Integer> sayilar){
         //lambda expression ile
         System.out.println("sayilar.stream().reduce(1,(a,b)-> a*b) = " +
                 sayilar.stream()
-                        .filter(My_Methods::ciftElemaniBul)//method ref kullanildi kendi class imizda
+                        .filter(My_Methods::ciftElemaniBul)//method referans kullanildi kendi classimizda
                         // create ettigimiz seed methodu kulandik
                         .reduce(1, (a, b) -> a * b));
         //method referans ile
         System.out.println(sayilar.stream().filter(My_Methods::ciftElemaniBul)
                 .reduce(Math::multiplyExact));
     }
-    //TODO task tek lerin karesini buyukten kucuge
+
+    //SORU 5-) tek sayilarin lerin karesini buyukten kucuge
     public static void teklerinKareBuyuktenKucuge(List<Integer> sayi) {
         sayi.stream()//liste akisa alindi
                 .filter(t->t%2!=0)//tek olan rakamlari sayilari filtreledim
@@ -79,9 +81,7 @@ public class Lambda_01 {//okul projesinde listele vb lamda expression ile yapini
                 .forEach(My_Methods::yazdir);//seed method kullanilarak method ref ile yazdirildi
     }
 
-    // Task : List elemanlarini alafabetik buyuk harf ve  tekrarsiz print ediniz.
-
-
+    // Soru 6-) List elemanlarini alafabetik buyuk harf ve  tekrarsiz print ediniz.
     public static void alfabetikBuyukHarfTekrarsiz(List<String> yemek) {
     }
     // Task : list elelmanlarinin character sayisini ters sirali olarak tekrarsiz print ediniz..
@@ -118,7 +118,7 @@ Sorunun farkli cozumleri.
            System.out.println("List elemanlari 7 ve daha az haften olusmus");
        }else System.out.println("Bazi elemanlar 7 den buyuk");
 
-       //Lambda yazim java 8 in faydalari
+       //Lambda yazim java 8 in faydalari ne guzel
 
         System.out.println(yemek.stream()
                 .allMatch(t -> t.length() <= 7) ?
